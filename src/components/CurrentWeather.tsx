@@ -1,27 +1,24 @@
 import { useQuery } from '@tanstack/react-query';
-import useWeatherStore from '../store/useWeatherStore';
-import { fetchWeather } from '../services/api';
+import { getWeatherData } from '../services/weatherService';
+import useWeatherStore from '../store/weatherStore';
 
 const CurrentWeather = () => {
-  const { city, unit } = useWeatherStore();
+  const { city, setWeatherData } = useWeatherStore();
 
-  const { data, isLoading, isError } = useQuery({
-    queryKey: ['weather', city, unit],
-    queryFn: () => fetchWeather(city, unit), // Fetch function
+  const { data, isLoading, error } = useQuery({
+    queryKey: ['weather', city],
+    queryFn: () => getWeatherData(city), // Fetch function
     enabled: !!city, // Run only when a city is provided
   });
 
   if (isLoading) return <div>Loading...</div>;
-  if (isError) return <div>Error fetching weather data.</div>;
-  console.log(data);
+  if (error instanceof Error) return <div>Error: {error.message}</div>;
 
   return (
     <div>
-      <h1>{data?.name}</h1>
-      <p>{data?.weather[0].description}</p>
-      <p>
-        {data?.main.temp}°{unit === 'metric' ? 'C' : 'F'}
-      </p>
+      <h2>Current Weather in {city}</h2>
+      <p>Temperature: {data?.main?.temp}°C</p>
+      <p>Weather: {data?.weather[0]?.description}</p>
     </div>
   );
 };
