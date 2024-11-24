@@ -3,7 +3,7 @@ import { getWeatherData } from '../services/weatherService';
 import useWeatherStore from '../store/weatherStore';
 
 const CurrentWeather = () => {
-  const { city, setWeatherData } = useWeatherStore();
+  const { city } = useWeatherStore();
 
   const { data, isLoading, error } = useQuery({
     queryKey: ['weather', city],

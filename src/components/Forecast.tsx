@@ -1,4 +1,3 @@
-import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { getForecastData } from '../services/weatherService';
 import useWeatherStore from '../store/weatherStore';
