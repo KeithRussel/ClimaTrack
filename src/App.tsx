@@ -1,9 +1,7 @@
+import CurrentWeather from './components/CurrentWeather';
+
 function App() {
-  return (
-    <>
-      <div>Hello World</div>
-    </>
-  );
+  return <CurrentWeather />;
 }
 
 export default App;
