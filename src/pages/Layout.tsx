@@ -1,18 +1,18 @@
-import { Outlet } from 'react-router'; // Outlet renders the content of the current nested route
-import styled from '@emotion/styled'; // For styling React components
+import { Outlet } from 'react-router';
+import styled from '@emotion/styled';
 
-// Styled component for a wrapper div with a fixed maximum width
 const Wrapper = styled.div`
-  margin: auto; /* Centers the content horizontally */
-  width: 800px; /* Sets a fixed width for the content area */
-  padding: 20px; /* Add some padding for better aesthetics */
-  box-sizing: border-box; /* Include padding in the width calculation */
+  /* margin: auto; No longer needed as #root will handle centering */
+  width: 800px;
+  padding: 20px;
+  box-sizing: border-box;
+  /* Add max-width for responsiveness on smaller screens */
+  max-width: 95%; /* Adjust as needed, ensures it's not too wide on small devices */
 `;
 
 const Layout = () => {
   return (
     <Wrapper>
-      {/* Outlet will render the component for the matched child route (e.g., Homepage) */}
       <Outlet />
     </Wrapper>
   );
