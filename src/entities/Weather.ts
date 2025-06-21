@@ -7,6 +7,7 @@ export interface Weather {
   };
   weather: {
     description: string; // Weather condition description (e.g., "clear sky")
+    icon: string; // Add the 'icon' property here
     // Add other properties if needed, e.g., 'id', 'main', 'icon'
   }[]; // Array because there can be multiple weather conditions (though often just one)
   name: string; // The city name (from current weather API response)
@@ -23,6 +24,7 @@ interface ForecastItem {
   };
   weather: {
     description: string; // Weather description for this forecast entry
+    icon: string; // Add the 'icon' property here for forecast items
   }[];
 }
 
